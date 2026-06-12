@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visit Kosovo</title>
+    <link rel="icon" href="img/VisitKosovo FAVICON.svg" />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&family=Merriweather:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Symbols (if using <span class="material-symbols-outlined">) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <a href="index.html"
+          ><img src="img/VISIT KOSOVO LOGO-02.svg" alt=""
+        /></a>
+      </div>
+      <nav>
+        <ul>
+          <div class="link-container">
+            <li><a href="index.html">Home</a></li>
+          </div>
+          <div
+            class="scrolldown-nav active-link"
+            style="border-bottom: 2px solid #cfd845"
+          >
+            <li><a href="page2.html">Destinations</a></li>
+            <span class="material-icons nav-arrow"> keyboard_arrow_down </span>
+            <div class="scroll-container">
+              <ul>
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">Historical</a></li>
+                <li><a href="#">Hiking</a></li>
+                <li><a href="#">Winter</a></li>
+                <li><a href="#">Nature</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="link-container">
+            <li><a href="page3.html">Things to Do</a></li>
+          </div>
+          <div class="link-container">
+            <li><a href="page4.html">Events</a></li>
+          </div>
+          <div class="link-container">
+            <li><a href="page5.html">Contact</a></li>
+          </div>
+        </ul>
+      </nav>
+      <div class="header-buttons">
+        <div class="header-icon">
+          <span class="material-icons">search</span>
+        </div>
+        <a href="page6.html">
+          <div class="header-icon">
+            <div class="notify-circle"></div>
+            <span class="material-icons">favorite</span>
+          </div>
+        </a>
+        <a href="page7.html">
+          <div class="header-icon">
+            <span class="material-icons">person</span>
+          </div>
+        </a>
+      </div>
+    </header>
+    <main>
+      <section class="dt-hero-section">
+        <h1>Your <span>Journey</span> Starts Here!</h1>
+        <p class="section-paragraph">
+          Discover the beauty, charm, and hidden gems of Kosovo — one
+          destination at a time.
+        </p>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Search for destinations..."
+            id="searchInput"
+          />
+          <button class="searchButton">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </div>
+      </section>
+      <section class="category-section">
+        <div class="category-title">
+          <h1><span>Unforgettable</span> Experiences Await!</h1>
+          <p class="section-paragraph">
+            Discover the best places for across Kosovo. Handpicked spots that
+            are perfect for every type of explorer.
+          </p>
+        </div>
+        <div class="category-container">
+          <div class="category-box" onclick="loadCategoryCard(0)">
+            <span class="material-icons">trending_up</span>
+            <h2>Popular</h2>
+          </div>
+          <div class="category-box" onclick="loadCategoryCard(1)">
+            <span class="material-icons">account_balance</span>
+            <h2>Historical</h2>
+          </div>
+          <div class="category-box" onclick="loadCategoryCard(2)">
+            <span class="material-icons">landscape</span>
+            <h2>Hiking</h2>
+          </div>
+          <div class="category-box" onclick="loadCategoryCard(3)">
+            <span class="material-icons">ac_unit</span>
+            <h2>Winter</h2>
+          </div>
+          <div class="category-box" onclick="loadCategoryCard(4)">
+            <span class="material-icons">park</span>
+            <h2>Nature</h2>
+          </div>
+        </div>
+        <div class="category-pop-up">
+          <div class="pop-up-content">
+            <div class="pop-up-grid" id="popupContent"></div>
+          </div>
+          <div class="close-btn" id="closeBtn">
+            <span class="material-icons">close</span>
+          </div>
+        </div>
+      </section>
+      <section class="main-dtn-section">
+        <div class="main-dtn-title">
+          <h1>Every Place Has a <span>Story!</span></h1>
+          <p class="section-paragraph">
+            Travel through stunning views and timeless landmarks. Each
+            destination holds a memory waiting to be made — explore them all.
+          </p>
+        </div>
+        <div class="main-dtn-grid" id="mainDestination"></div>
+        <div class="testimonial-buttons">
+          <button class="test-btn" id="testBtnLeft">
+            <span class="material-icons">chevron_left</span>
+          </button>
+          <button class="test-btn test-btn-active" id="testBtnRight">
+            <span class="material-icons">chevron_right</span>
+          </button>
+        </div>
+      </section>
+      <section class="location-dtn-section">
+        <div class="location-title">
+          <h1>Pick a <span>City</span>, Find a Gem!</h1>
+          <p class="section-paragraph">
+            Want to know what each place has to offer? Choose a location and
+            discover unique destinations, landmarks, and hidden gems across
+            Kosovo.
+          </p>
+        </div>
+        <div class="selection-container">
+          <h2>Select a City:</h2>
+          <select name="" id="select"></select>
+        </div>
+        <div class="location-dtn-grid" id="locationDtn"></div>
+      </section>
+      <section class="mustsee-section">
+        <div class="mustsee-title">
+          <h1>Must See <span>Places!</span></h1>
+          <p class="section-paragraph">
+            Discover the iconic gems that define the spirit of Kosovo. These
+            must-visit destinations promise unforgettable adventures and
+            breathtaking memories.
+          </p>
+        </div>
+        <div class="mustsee-content"></div>
+      </section>
+      <section class="seasons-section">
+        <div class="seasons-title">
+          <h1>Best Time to <span>Visit Kosovo!</span></h1>
+          <p class="section-paragraph">
+            Whether you dream of sunny hikes, snowy adventures, or vibrant city
+            festivals, Kosovo welcomes you in every season. Here's what you can
+            expect throughout the year!
+          </p>
+        </div>
+        <div class="seasons-content">
+          <div class="season-card">
+            <span class="material-icons bck-icon">local_florist</span>
+            <div class="season-title">
+              <span class="material-icons">local_florist</span>
+              <h1>Spring</h1>
+            </div>
+            <div class="season-info">
+              <h2>March - May</h2>
+              <div>
+                <ul>
+                  <li>
+                    <span class="material-icons">cloud</span>
+                    <p>Mild temperatures, beautiful green landscapes.</p>
+                  </li>
+                  <li>
+                    <span class="material-icons">check_circle</span>
+                    <p>Hiking, City exploring, Historical tours.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="season-card green-season">
+            <span class="material-icons bck-icon">sunny</span>
+            <div class="season-title">
+              <span class="material-icons">sunny</span>
+              <h1>Summer</h1>
+            </div>
+            <div class="season-info">
+              <h2>June - August</h2>
+              <div>
+                <ul>
+                  <li>
+                    <span class="material-icons">cloud</span>
+                    <p>Warm and sunny.</p>
+                  </li>
+                  <li>
+                    <span class="material-icons">check_circle</span>
+                    <p>Lake trips, Festivals, Mountain hikes.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="season-card">
+            <span class="material-icons bck-icon">eco</span>
+            <div class="season-title">
+              <span class="material-icons">eco</span>
+              <h1>Autumn</h1>
+            </div>
+            <div class="season-info">
+              <h2>September - November</h2>
+              <div>
+                <ul>
+                  <li>
+                    <span class="material-icons">cloud</span>
+                    <p>Crisp air, colorful foliage.</p>
+                  </li>
+                  <li>
+                    <span class="material-icons">check_circle</span>
+                    <p>Sightseeing, Food tours, Light hiking.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="season-card green-season">
+            <span class="material-icons bck-icon">ac_unit</span>
+            <div class="season-title">
+              <span class="material-icons">ac_unit</span>
+              <h1>Winter</h1>
+            </div>
+            <div class="season-info">
+              <h2>December - February</h2>
+              <div>
+                <ul>
+                  <li>
+                    <span class="material-icons">cloud</span>
+                    <p>Cold, snowy in mountains.</p>
+                  </li>
+                  <li>
+                    <span class="material-icons">check_circle</span>
+                    <p>Skiing, Snowboarding, Cozy town visits.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="foot-up">
+        <div class="foot-logo">
+          <a href="index.html"
+            ><img src="img/VISIT KOSOVO LOGO Version 2-03.svg" alt=""
+          /></a>
+        </div>
+        <ul>
+          <h3>Links</h3>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="page2.html">Destinations</a></li>
+          <li><a href="page3.html">Things to Do</a></li>
+          <li><a href="page4.html">Events</a></li>
+          <li><a href="page5.html">Contact</a></li>
+        </ul>
+        <ul>
+          <h3>Company</h3>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Testimonial</a></li>
+        </ul>
+        <ul>
+          <h3>Support</h3>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Webians</a></li>
+          <li><a href="#">Tweet @ Us</a></li>
+          <li><a href="#">Feedback</a></li>
+        </ul>
+      </div>
+      <div class="divide"></div>
+      <div class="foot-down">
+        <p>© 2025 VisitKosovo. All rights reserved.</p>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="top-button" id="backToTop">
+        <span class="material-icons">keyboard_arrow_up</span>
+      </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script src="destinations.js"></script>
+  </body>
+</html>
