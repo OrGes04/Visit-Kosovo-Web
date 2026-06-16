@@ -119,7 +119,7 @@ function showAllDestinations(all) {
   showMap();
 }
 
-function updateButtons() {
+function updateDestinationButtons() {
   if (currentDestIndex > 0) {
     testBtnLeft.classList.add("test-btn-active");
   } else {
@@ -139,7 +139,7 @@ testBtnLeft.addEventListener("click", () => {
     currentDestIndex--;
   }
   showAllDestinations(currentDestIndex);
-  updateButtons();
+  updateDestinationButtons();
 });
 
 testBtnRight.addEventListener("click", () => {
@@ -148,7 +148,7 @@ testBtnRight.addEventListener("click", () => {
     currentDestIndex++;
   }
   showAllDestinations(currentDestIndex);
-  updateButtons();
+  updateDestinationButtons();
 });
 ///////////////////
 

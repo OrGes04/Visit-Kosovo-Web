@@ -113,7 +113,7 @@ function changeCategory() {
   categoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
       categoryButtons.forEach((btn) =>
-        btn.classList.remove("active-destination-btn")
+        btn.classList.remove("active-destination-btn"),
       );
       button.classList.add("active-destination-btn");
     });
