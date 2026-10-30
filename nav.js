@@ -47,9 +47,7 @@
           </li>
         </ul>
         <div class="mobile-menu-icons">
-          <a href="#" aria-label="Search"><span class="material-icons">search</span></a>
-          <a href="page6.html" aria-label="Favorites"><span class="material-icons">favorite</span></a>
-          <a href="page7.html" aria-label="Account"><span class="material-icons">person</span></a>
+          <a href="page2.html" aria-label="Search destinations"><span class="material-icons">search</span></a>
         </div>
       </div>
     `;

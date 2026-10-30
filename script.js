@@ -15,7 +15,7 @@ const backtoTopBtn = document.querySelector("#backToTop");
 
 let currentTestimonial = 0;
 
-changeContent(0);
+if (content) changeContent(0);
 function changeContent(index) {
   content.innerHTML = `
     <div class="adventure-info">
@@ -57,7 +57,7 @@ lines.forEach((line, index) => {
 });
 //////////////
 
-loadCard(0);
+if (allCards) loadCard(0);
 function loadCard(d) {
   currentContent = d;
   let card = destination[d].content;
@@ -108,17 +108,17 @@ function loadCard(d) {
 
 function changeCategory() {
   allCards.innerHTML = "";
-
-  const categoryButtons = document.querySelectorAll(".destination-btn");
-  categoryButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      categoryButtons.forEach((btn) =>
-        btn.classList.remove("active-destination-btn"),
-      );
-      button.classList.add("active-destination-btn");
-    });
-  });
 }
+
+const categoryButtons = document.querySelectorAll(".destination-btn");
+categoryButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    categoryButtons.forEach((btn) =>
+      btn.classList.remove("active-destination-btn"),
+    );
+    button.classList.add("active-destination-btn");
+  });
+});
 
 function showCardDetail() {
   const cardArrows = document.querySelectorAll("#detail-arrow");
@@ -157,7 +157,7 @@ function showMap() {
 
 const chooseSection = document.querySelector("#chooseContent");
 
-loadChoose(0);
+if (chooseSection) loadChoose(0);
 function loadChoose(choose) {
   let chooseContent = chooseData[choose];
 
@@ -187,20 +187,20 @@ function loadChoose(choose) {
 
 function changeChoose() {
   chooseSection.innerHTML = "";
-
-  const chooseButtons = document.querySelectorAll(".choose-category");
-  chooseButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      chooseButtons.forEach((btn) => btn.classList.remove("active-category"));
-      button.classList.add("active-category");
-    });
-  });
 }
+
+const chooseButtons = document.querySelectorAll(".choose-category");
+chooseButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    chooseButtons.forEach((btn) => btn.classList.remove("active-category"));
+    button.classList.add("active-category");
+  });
+});
 ////////////////
 
-mapBtn.addEventListener("click", mapContent);
+mapBtn?.addEventListener("click", mapContent);
 
-mapContent();
+if (discoverContent) mapContent();
 function mapContent() {
   discoverContent.innerHTML = "";
   discoverContent.innerHTML += `
@@ -221,7 +221,7 @@ function mapContent() {
   videoBtn.classList.remove("discover-btn-active");
 }
 
-galleryBtn.addEventListener("click", () => galleryContent());
+galleryBtn?.addEventListener("click", () => galleryContent());
 
 let currentGalleryIndex = 0;
 function galleryContent(imageIndex = 0) {
@@ -274,7 +274,7 @@ function galleryContent(imageIndex = 0) {
   videoBtn.classList.remove("discover-btn-active");
 }
 
-videoBtn.addEventListener("click", videoContent);
+videoBtn?.addEventListener("click", videoContent);
 
 function videoContent() {
   videoBtn.innerHTML = `<span class="material-icons">smart_display</span> Video`;
@@ -298,7 +298,7 @@ function videoContent() {
 }
 //////////////
 
-loadTestimonial(0);
+if (testimonialContent) loadTestimonial(0);
 function loadTestimonial(t) {
   let testimonial = testimonialsData[t].content;
 
@@ -344,7 +344,7 @@ function updateButtons() {
   }
 }
 
-testBtnLeft.addEventListener("click", () => {
+testBtnLeft?.addEventListener("click", () => {
   testimonialContent.innerHTML = "";
   if (currentTestimonial > 0) {
     currentTestimonial--;
@@ -353,7 +353,7 @@ testBtnLeft.addEventListener("click", () => {
   updateButtons();
 });
 
-testBtnRight.addEventListener("click", () => {
+testBtnRight?.addEventListener("click", () => {
   testimonialContent.innerHTML = "";
   if (currentTestimonial < testimonialsData.length - 1) {
     currentTestimonial++;
