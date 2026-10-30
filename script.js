@@ -66,10 +66,8 @@ function loadCard(d) {
     allCards.innerHTML += `
             <div class="card-content">
                     <div class="card-details">
-                        <span class="material-icons" id="detail-arrow">chevron_right</span>
                         <div class="details-right">
-                            <div class="divide"></div>
-                            <span title="Save" class="material-icons">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
+                            <span title="Save" class="material-icons save-icon">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
                         </div>
                         <div class="map-container">
                         ${card[i].map}
@@ -101,9 +99,6 @@ function loadCard(d) {
             </div>
         `;
   }
-
-  showCardDetail();
-  showMap();
 }
 
 function changeCategory() {
@@ -120,39 +115,6 @@ categoryButtons.forEach((button) => {
   });
 });
 
-function showCardDetail() {
-  const cardArrows = document.querySelectorAll("#detail-arrow");
-  cardArrows.forEach((cardArrow) => {
-    cardArrow.addEventListener("click", () => {
-      cardArrow.classList.toggle("active-detail-arrow");
-
-      const mapContainer = cardArrow
-        .closest(".card-content")
-        .querySelector(".map-container");
-
-      if (mapContainer.classList.contains("active-map")) {
-        mapContainer.classList.remove("active-map");
-      }
-
-      const detailsRight = cardArrow
-        .closest(".card-content")
-        .querySelector(".details-right");
-      detailsRight.classList.toggle("active-detail");
-    });
-  });
-}
-
-function showMap() {
-  mapIcons = document.querySelectorAll(".map-icon");
-  mapIcons.forEach((mapIcon) => {
-    mapIcon.addEventListener("click", () => {
-      const mapContainer = mapIcon
-        .closest(".card-content")
-        .querySelector(".map-container");
-      mapContainer.classList.toggle("active-map");
-    });
-  });
-}
 //////////////
 
 const chooseSection = document.querySelector("#chooseContent");

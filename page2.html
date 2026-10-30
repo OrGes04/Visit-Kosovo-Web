@@ -69,20 +69,23 @@
     </header>
     <main>
       <section class="dt-hero-section">
-        <h1>Your <span>Journey</span> Starts Here!</h1>
-        <p class="section-paragraph">
-          Discover the beauty, charm, and hidden gems of Kosovo — one
-          destination at a time.
-        </p>
-        <div class="search-container">
-          <input
-            type="text"
-            placeholder="Search for destinations..."
-            id="searchInput"
-          />
-          <button class="searchButton">
-            <span class="material-symbols-outlined">search</span>
-          </button>
+        <div class="dt-hero-content">
+          <h1>Your <span>Journey</span> Starts Here!</h1>
+          <p class="section-paragraph">
+            Discover the beauty, charm, and hidden gems of Kosovo — one
+            destination at a time.
+          </p>
+          <div class="search-container">
+            <input
+              type="text"
+              placeholder="Search for destinations..."
+              id="searchInput"
+              aria-label="Search for destinations"
+            />
+            <button class="searchButton" aria-label="Search">
+              <span class="material-symbols-outlined">search</span>
+            </button>
+          </div>
         </div>
       </section>
       <section class="category-section">
@@ -318,6 +321,7 @@
     <script src="data.js"></script>
     <script src="script.js"></script>
     <script src="destinations.js"></script>
+    <script src="cards.js"></script>
     <script src="nav.js"></script>
   </body>
 </html>

@@ -77,8 +77,8 @@
             journey starts here.
           </p>
           <div>
-            <button class="main-btn">Book a tour</button>
-            <button class="second-btn">Read more</button>
+            <a href="page2.html"><button class="main-btn">Book a tour</button></a>
+            <a href="#adventure"><button class="second-btn">Read more</button></a>
           </div>
         </div>
         <div class="hero-box firstBox">
@@ -126,7 +126,7 @@
           <img src="img/Tripadvisor - Logo.png" alt="" />
         </div>
       </section>
-      <section class="adventure-section">
+      <section class="adventure-section" id="adventure">
         <div class="adventure-left">
           <h1>Where Will Your Next <br /><span>Adventure</span> Take You?</h1>
           <p>
@@ -312,45 +312,50 @@
         <div class="stats-content">
           <div class="stats-box">
             <span class="material-icons">luggage</span>
-            <p>Over 1 million tourists visit Kosovo each year!</p>
+            <div class="stats-info">
+              <h2>1M+</h2>
+              <p>tourists visit Kosovo each year</p>
+            </div>
             <span class="material-icons bck-icon">luggage</span>
           </div>
           <div class="stats-box pink-stats">
             <span class="material-icons">nature</span>
-            <p>
-              Kosovo is home to 2 stunning national parks, covering over 125,000
-              hectares.
-            </p>
+            <div class="stats-info">
+              <h2>2</h2>
+              <p>national parks, covering over 125,000 hectares</p>
+            </div>
             <span class="material-icons bck-icon green-bck-icon">nature</span>
           </div>
           <div class="stats-box">
             <span class="material-icons">account_balance</span>
-            <p>
-              Kosovo has 3 UNESCO heritage sites, showcasing its rich history.
-            </p>
+            <div class="stats-info">
+              <h2>3</h2>
+              <p>UNESCO heritage sites, showcasing its rich history</p>
+            </div>
             <span class="material-icons bck-icon">account_balance</span>
           </div>
           <div class="stats-box pink-stats">
             <span class="material-icons">handshake</span>
-            <p>
-              Over 90% of visitors rate Kosovo as a welcoming and friendly
-              destination!
-            </p>
-            <span class="material-icons bck-icon green-bck-icon"
-              >handshake</span
-            >
+            <div class="stats-info">
+              <h2>90%</h2>
+              <p>of visitors rate Kosovo as welcoming and friendly</p>
+            </div>
+            <span class="material-icons bck-icon green-bck-icon">handshake</span>
           </div>
           <div class="stats-box">
             <span class="material-icons">landscape</span>
-            <p>
-              Over 50% of Kosovo is covered by mountains, perfect for hiking and
-              adventure tourism.
-            </p>
+            <div class="stats-info">
+              <h2>50%+</h2>
+              <p>of Kosovo is covered by mountains, perfect for hiking</p>
+            </div>
             <span class="material-icons bck-icon">landscape</span>
           </div>
           <div class="stats-box pink-stats">
             <span class="material-icons">paid</span>
-            <p>Kosovo is one of Europe's cheapest travel destinations.</p>
+            <div class="stats-info">
+              <h2>Low-cost</h2>
+              <p>one of Europe's cheapest travel destinations</p>
+            </div>
             <span class="material-icons bck-icon green-bck-icon">paid</span>
           </div>
         </div>
@@ -514,6 +519,7 @@
     </footer>
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script src="cards.js"></script>
     <script src="nav.js"></script>
   </body>
 </html>

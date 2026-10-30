@@ -22,17 +22,17 @@ closeBtn.addEventListener("click", () => {
 });
 
 function loadCategoryCard(c) {
-  let card = categoryDest[c].content;
+  renderPopupCards(categoryDest[c].content);
+}
 
+function renderPopupCards(card) {
   popupContent.innerHTML = "";
   for (let i = 0; i < card.length; i++) {
     popupContent.innerHTML += `
             <div class="card-content">
                     <div class="card-details">
-                        <span class="material-icons" id="detail-arrow">chevron_right</span>
                         <div class="details-right">
-                            <div class="divide"></div>
-                            <span title="Save" class="material-icons">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
+                            <span title="Save" class="material-icons save-icon">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
                         </div>
                         <div class="map-container">
                         ${card[i].map}
@@ -64,10 +64,41 @@ function loadCategoryCard(c) {
             </div>
         `;
   }
-
-  showCardDetail();
-  showMap();
 }
+
+const searchInput = document.querySelector("#searchInput");
+const searchButton = document.querySelector(".searchButton");
+
+function searchDestinations() {
+  const query = searchInput.value.trim().toLowerCase();
+  if (!query) return;
+
+  const everyPlace = [
+    ...categoryDest.flatMap((group) => group.content),
+    ...allDestinations.flatMap((group) => group.content),
+    ...cityDtn.flatMap((group) => group.content),
+  ];
+  const results = everyPlace.filter(
+    (place, index) =>
+      everyPlace.findIndex((p) => p.title === place.title) === index &&
+      (place.title.toLowerCase().includes(query) ||
+        place.location.toLowerCase().includes(query)),
+  );
+
+  renderPopupCards(results);
+  if (!results.length) {
+    const empty = document.createElement("p");
+    empty.className = "search-empty";
+    empty.textContent = `No destinations found for "${searchInput.value.trim()}".`;
+    popupContent.appendChild(empty);
+  }
+  categoryPopup.style.display = "block";
+}
+
+searchButton.addEventListener("click", searchDestinations);
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") searchDestinations();
+});
 ////////////////////////
 
 showAllDestinations(0);
@@ -79,10 +110,8 @@ function showAllDestinations(all) {
     mainDestination.innerHTML += `
                 <div class="card-content">
                     <div class="card-details">
-                        <span class="material-icons" id="detail-arrow">chevron_right</span>
                         <div class="details-right">
-                            <div class="divide"></div>
-                            <span title="Save" class="material-icons">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
+                            <span title="Save" class="material-icons save-icon">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
                         </div>
                         <div class="map-container">
                         ${card[i].map}
@@ -114,9 +143,6 @@ function showAllDestinations(all) {
             </div>
         `;
   }
-
-  showCardDetail();
-  showMap();
 }
 
 function updateDestinationButtons() {
@@ -166,10 +192,8 @@ function loadLocationDtn(c) {
     locationDtn.innerHTML += `
                 <div class="card-content">
                     <div class="card-details">
-                        <span class="material-icons" id="detail-arrow">chevron_right</span>
                         <div class="details-right">
-                            <div class="divide"></div>
-                            <span title="Save" class="material-icons">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
+                            <span title="Save" class="material-icons save-icon">favorite</span><span title="Show map" class="material-icons map-icon">map</span>
                         </div>
                         <div class="map-container">
                         ${card[i].map}
@@ -201,9 +225,6 @@ function loadLocationDtn(c) {
             </div>
         `;
   }
-
-  showCardDetail();
-  showMap();
 }
 
 loadLocationDtn(0);
