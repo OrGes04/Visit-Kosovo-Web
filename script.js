@@ -156,6 +156,9 @@ chooseButtons.forEach((button) => {
   button.addEventListener("click", () => {
     chooseButtons.forEach((btn) => btn.classList.remove("active-category"));
     button.classList.add("active-category");
+
+    const tabs = button.parentElement;
+    tabs.scrollTo({ left: button.offsetLeft - tabs.offsetLeft - 20, behavior: "smooth" });
   });
 });
 ////////////////

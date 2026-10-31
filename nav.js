@@ -15,9 +15,14 @@
 
     const overlay = document.createElement("div");
     overlay.className = "mobile-menu";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Menu");
     overlay.innerHTML = `
       <div class="mobile-menu-header">
-        <span class="mobile-menu-title">Menu</span>
+        <a href="index.html" class="mobile-menu-logo" aria-label="Visit Kosovo home">
+          <img src="img/VISIT KOSOVO LOGO Version 2-03.svg" alt="" />
+        </a>
         <button class="mobile-menu-close" aria-label="Close menu">
           <span class="material-icons">close</span>
         </button>
@@ -25,64 +30,50 @@
       <div class="mobile-menu-nav">
         <ul>
           <li><a href="index.html" class="${isHome ? "mobile-active" : ""}">Home</a></li>
-          <li class="mobile-has-submenu">
-            <div class="mobile-nav-row">
-              <a href="page2.html" class="${!isHome ? "mobile-active" : ""}">Destinations</a>
-              <button class="mobile-submenu-toggle" aria-label="Toggle categories" aria-expanded="false">
-                <span class="material-icons">expand_more</span>
-              </button>
-            </div>
-            <div class="mobile-submenu">
-              <div class="mobile-submenu-inner">
-                <p class="mobile-submenu-title">Categories</p>
-                <ul>
-                  <li><a href="#">Popular</a></li>
-                  <li><a href="#">Historical</a></li>
-                  <li><a href="#">Hiking</a></li>
-                  <li><a href="#">Winter</a></li>
-                  <li><a href="#">Nature</a></li>
-                </ul>
-              </div>
-            </div>
-          </li>
+          <li><a href="page2.html" class="${!isHome ? "mobile-active" : ""}">Destinations</a></li>
         </ul>
-        <div class="mobile-menu-icons">
-          <a href="page2.html" aria-label="Search destinations"><span class="material-icons">search</span></a>
-        </div>
       </div>
+      <a href="page2.html" class="mobile-menu-cta">Book a tour</a>
     `;
     document.body.appendChild(overlay);
 
     const closeBtn = overlay.querySelector(".mobile-menu-close");
 
-    const submenuToggle = overlay.querySelector(".mobile-submenu-toggle");
-    const submenu = overlay.querySelector(".mobile-submenu");
-    if (submenuToggle && submenu) {
-      submenuToggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const isOpen = submenu.classList.toggle("open");
-        submenuToggle.classList.toggle("open", isOpen);
-        submenuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      });
-    }
-
     function openMenu() {
       overlay.classList.add("open");
       document.body.classList.add("mobile-menu-open");
       toggle.setAttribute("aria-expanded", "true");
+      closeBtn.focus();
     }
     function closeMenu() {
+      if (!overlay.classList.contains("open")) return;
       overlay.classList.remove("open");
       document.body.classList.remove("mobile-menu-open");
       toggle.setAttribute("aria-expanded", "false");
+      toggle.focus();
     }
 
     toggle.addEventListener("click", openMenu);
     closeBtn.addEventListener("click", closeMenu);
 
     overlay.addEventListener("click", (e) => {
-      if (e.target === overlay || e.target.closest("a")) closeMenu();
+      if (e.target.closest("a")) closeMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!overlay.classList.contains("open")) return;
+      if (e.key === "Escape") closeMenu();
+      if (e.key !== "Tab") return;
+      const items = overlay.querySelectorAll("a, button");
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
 
     window.addEventListener("resize", () => {
