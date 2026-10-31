@@ -112,6 +112,9 @@ categoryButtons.forEach((button) => {
       btn.classList.remove("active-destination-btn"),
     );
     button.classList.add("active-destination-btn");
+
+    const tabs = button.parentElement;
+    tabs.scrollTo({ left: button.offsetLeft - tabs.offsetLeft - 20, behavior: "smooth" });
   });
 });
 

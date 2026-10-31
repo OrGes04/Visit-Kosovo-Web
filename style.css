@@ -3110,6 +3110,30 @@ html:has(body.details-open) {
         width: 20px;
     }
 
+    .category-buttons {
+        gap: 24px;
+    }
+
+    .all-destination-buttons {
+        width: calc(100% + 10vw);
+        margin-inline: -5vw;
+        padding-inline: 5vw;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .all-destination-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .destination-btn {
+        flex: none;
+        height: 42px;
+        padding: 0 18px;
+        white-space: nowrap;
+    }
+
     .choose-all-cat {
         height: auto;
         margin: 30px 0 20px;
